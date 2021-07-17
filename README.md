@@ -8,4 +8,4 @@ Ele enviará os tokens novos em seu bot do telegram tambem, caso queira receber 
 
 para iniciar, basta executar o script | ./sniff
 
-provavelmente tentarei deixar ele melhor com o tempo :)
+quem sabe, tentarei deixar ele melhor com o tempo :)
