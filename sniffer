@@ -22,17 +22,22 @@ while :; do
                    1) echo -e "\e[01;33mProcurando...\e[0m"
                       sleep 10; tput cuu1; tput dl1
                    ;;
-                   *) 
+                   *)
                    echo -e "$new2" > msg; x=$(wc -l < msg)
+                   stok="2|4|6|8|10|12|14|16|18|20"
+                   snam="1|3|5|7|9|11|13|15|17|19"
                    for i in $(seq $x)
                        do
-                     case $i in
-                        2|4|6|8|10|12|14|16|18|20)
-                              sed -i ""$i"s/^/<code>/" msg; sed -i ""$i"s/$/<\/code>/" msg
+                       eval "
+                     case \$i in
+                        $stok) 
+                              link=\$((\$i-1)); link2=\$(sed -n \"\$i\"p msg | sed 's/<code>//g; s/<\/code>//g')
+                              sed -i \"\"\$link\"s/\$/ | <b><a href='charts.bogged.finance\/\"\$link2\"'>Info\'s<\/a><\/b>/\" msg
+                              sed -i \"\"\$i\"s/^/<code>/\" msg; sed -i \"\"\$i\"s/\$/<\/code>/\" msg
                              ;;
-                        1|3|5|7|9|11|13|15|17|19)
-                              sed -i ""$i"s/^/<b>/" msg; sed -i ""$i"s/$/<\/b>/" msg
-                     esac
+                        $snam)
+                              sed -i \"\"\$i\"s/^/<b>/\" msg; sed -i \"\"\$i\"s/\$/<\/b>/\" msg
+                     esac"
                    done; msg2=$(<msg)
                    echo -e "\e[01;37mNovos tokens disponíveis | $(cut -d" " -f4 <<< $(date +%T))\e[0m"
                       echo -e "$new2\n==========================================="
