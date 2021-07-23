@@ -1,7 +1,7 @@
 # tokensniffer
 script basico para capturar novos tokens do site - tokensniffer.com
 
-Coloquei para capturar apenas BSC | Existe um tempo entre 10s para cada verificação
+Coloquei para capturar apenas BSC | Existe um tempo entre 5s para cada verificação
 
 git clone https://github.com/M4tiass/tokensniffer.git && cd tokensniffer && chmod +x sniffer
 
