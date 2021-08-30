@@ -12,3 +12,5 @@ Opção para receber os tokens novos em seu bot do telegram tambem
 caso queira receber no seu bot, coloque o seu token/id dentro do script
 
 quem sabe, tentarei deixar ele melhor com o tempo :)
+
+**OFF if you need <a href="https://t.me/medroso">contact me</a>**
