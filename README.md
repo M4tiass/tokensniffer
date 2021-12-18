@@ -12,8 +12,10 @@
     Coloquei para capturar apenas BSC | Existe um tempo entre 15s para cada verificação<br>
 Para iniciar, basta executar o script ./sniffer
 <br><br>
-- Opção para receber os tokens novos em seu bot do telegram<br>
+    Opção para receber os tokens novos em seu bot do telegram<br>
 caso queira receber no seu bot, coloque o seu token/id dentro do script
 </p>
 
-**OFF if you need <a href="https://t.me/Mat1as">contact me</a>**
+<blockquote>
+  <p>Baixe a última versão do termux <a href="https://f-droid.org/en/packages/com.termux">AQUI</a><br>Dúvidas? <a href="https://t.me/medroso">Telegram | Matias</a></p>
+</blockquote>
