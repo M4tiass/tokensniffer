@@ -1,26 +1,28 @@
 #!/bin/bash
 
 # RECEBER TOKENS NO SEU BOT DO TELEGRAM
-TOKEN=SEUTOKEN
-ID=SEUIDs
+# PODES COLOCAR VARIOS TOKENS E IDS, SEPARADOS POR ,
+# EX TOKEN="bot1,bot2,bot3"
+# EX ID="id1,id2,id3"
 
+TOKEN="BOTTOKEN"
+ID="SEUIDTELEGRAM"
 clear
 
-if [ -f tokens ]; then
-     echo
-else 
-   > tokens
-fi
+if [ -f tokens ]; then :; else > tokens; fi
+
 ids=$(awk -F',' '{print NF; exit}' <<< $ID)
+tokis=$(awk -F',' '{print NF; exit}' <<< $TOKEN)
+
 echo -e "\e[01;33m • BUSCANDO NOVOS TOKENS • \e[0m\n"
 while :; do
-      
-      new=$(curl -s https://tokensniffer.com/tokens/new | pup '#__NEXT_DATA__' | sed '2q;d' | jq -r '.props.pageProps.tokens."0"[],.props.pageProps.tokens."1"[] | {name:.name,addr:.addr}' | jq .name,.addr -r | tr -d ' ' > tokens2)
+
+      new=$(curl -s https://tokensniffer.com/tokens/new -H 'User-Agent: Android' | pup '#__NEXT_DATA__' | sed '2q;d' | jq -r '.props.pageProps.tokens."0"[],.props.pageProps.tokens."1"[] | {name:.name,addr:.addr}' | jq .name,.addr -r | tr -d ' ' > tokens2)
       new2=$(diff tokens tokens2 | grep '>' | tr -d '> ')
       new3=$(wc -l <<< $new2)
              case $new3 in
                    1) echo -e "\e[01;33mProcurando...\e[0m"
-                      sleep 5; tput cuu1; tput dl1
+                      sleep 15; tput cuu1; tput dl1
                    ;;
                    *)
                    echo -e "$new2" > msg; x=$(wc -l < msg)
@@ -30,21 +32,27 @@ while :; do
                        do
                        eval "
                      case \$i in
-                        $par\ ) 
+                        $par\ )
                               link=\$((\$i-1)); link2=\$(sed -n \"\$i\"p msg | sed 's/<code>//g; s/<\/code>//g')
+
                               sed -i \"\"\$link\"s/\$/ | <a href='charts.bogged.finance\/\"\$link2\"'>Info\'s<\/a><\/b>/\" msg
+
                               sed -i \"\"\$i\"s/^/<code>/\" msg; sed -i \"\"\$i\"s/\$/<\/code>/\" msg
                              ;;
                         $impar\ )
                               sed -i \"\"\$i\"s/^/<b>/\" msg
                      esac"
-                   done; msg2=$(<msg)
+                   done
                    echo -e "\e[01;37mNovos tokens disponíveis | $(cut -d" " -f4 <<< $(date +%T))\e[0m"
                      echo -e "$new2"; printf '=%.0s' {1..43}; echo
                      diff tokens tokens2 -e > dif; echo w >> dif && ed - tokens < dif
-                    for i in $(seq 1 $ids); do ID2=$(cut -d ',' -f$i <<< "$ID")
-                        $(curl -s https://api.telegram.org/$TOKEN/sendMessage -d chat_id="$ID2" -d text="$(echo -e "<b>Novos tokens disponíveis | $(cut -d" " -f4 <<< $(date +%T))</b>\n\n$msg2&parse_mode=HTML")" </dev/null >/dev/null 2>&1&)
-                        done
-                    sleep 5
+                    for i in $(seq 1 $tokis); do
+                        TOKI2=$(cut -d ',' -f$i <<< "$TOKEN")
+                     for i in $(seq $(wc -l <<< "$tokis")); do
+                        ID2=$(cut -d ',' -f$i <<< "$ID")
+                            $(curl -s https://api.telegram.org/$TOKI2/sendMessage -d chat_id="$ID2" -d text="$(echo -e "<b>Novos tokens disponíveis | $(cut -d" " -f4 <<< $(date +%T))\n**✅ SNIFFER ✅**</b>\n\n$(<msg)&parse_mode=HTML")" -d disable_web_page_preview="true" </dev/null >/dev/null 2>&1&)
+                     done
+                    done
+                    sleep 15
              esac
 done
