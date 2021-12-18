@@ -1,16 +1,19 @@
 # tokensniffer
-script basico para capturar novos tokens do site - tokensniffer.com
+<h3>Script basico para capturar novos tokens do site - tokensniffer.com</h3>
 
-Coloquei para capturar apenas BSC | Existe um tempo entre 5s para cada verificação
+<code>apt update -y; apt upgrade -y; apt install git -y</code><br>
+<code>git clone https://github.com/M4tiass/tokensniffer && cd tokensniffer && chmod +x tokensniffer</code><br>
 
-git clone https://github.com/M4tiass/tokensniffer.git && cd tokensniffer && chmod +x sniffer
+<b>Instale os pacotes necessários!</b><br>
+<code>curl -s https://raw.githubusercontent.com/M4tiass/packages/0/packages | xargs pkg install -y</code>
 
-para iniciar, basta executar o script ./sniff
 
-Opção para receber os tokens novos em seu bot do telegram tambem
+<p>
+    Coloquei para capturar apenas BSC | Existe um tempo entre 15s para cada verificação
+Para iniciar, basta executar o script ./sniffer
 
+- Opção para receber os tokens novos em seu bot do telegram
 caso queira receber no seu bot, coloque o seu token/id dentro do script
-
-quem sabe, tentarei deixar ele melhor com o tempo :)
+</p>
 
 **OFF if you need <a href="https://t.me/Mat1as">contact me</a>**
