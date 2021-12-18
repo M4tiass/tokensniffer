@@ -9,10 +9,10 @@
 
 
 <p>
-    Coloquei para capturar apenas BSC | Existe um tempo entre 15s para cada verificação
+    Coloquei para capturar apenas BSC | Existe um tempo entre 15s para cada verificação<br>
 Para iniciar, basta executar o script ./sniffer
-
-- Opção para receber os tokens novos em seu bot do telegram
+<br><br>
+- Opção para receber os tokens novos em seu bot do telegram<br>
 caso queira receber no seu bot, coloque o seu token/id dentro do script
 </p>
 
