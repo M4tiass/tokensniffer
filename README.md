@@ -2,7 +2,7 @@
 <h3>Script basico para capturar novos tokens do site - tokensniffer.com</h3>
 
 <code>apt update -y; apt upgrade -y; apt install git -y</code><br>
-<code>git clone https://github.com/M4tiass/tokensniffer && cd tokensniffer && chmod +x tokensniffer</code><br>
+<code>git clone https://github.com/M4tiass/tokensniffer && cd tokensniffer && chmod +x sniffer</code><br>
 
 <b>Instale os pacotes necessários!</b><br>
 <code>curl -s https://raw.githubusercontent.com/M4tiass/packages/0/packages | xargs pkg install -y</code>
